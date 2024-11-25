@@ -4,32 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import talento.tech.conectacol.conectacol.Entities.Rol;
-import talento.tech.conectacol.conectacol.Services.RolService;
+import talento.tech.conectacol.conectacol.Entities.Sector;
+import talento.tech.conectacol.conectacol.Services.SectorService;
 import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
 
-import java.util.Optional;
-
+@CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/conectacol/rol")
-public class RolController {
-
+@RequestMapping("/conectacol/sector")
+public class SectorController {
     @Autowired
-    private RolService rolService;
+    private SectorService sectorService;
 
     @Autowired
     private MyResponseUtility response;
 
     @PostMapping
-    public ResponseEntity<MyResponseUtility> saveRol(@RequestBody Rol rol){
-        response = rolService.saveRol(rol);
+    public ResponseEntity<MyResponseUtility> createSector(@RequestBody Sector sector)  {
+        response = sectorService.createSector(sector);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+    }
+    @GetMapping("/{idSector}")
+    public ResponseEntity<MyResponseUtility> finById(@PathVariable int idSector){
+        response = sectorService.findById(idSector);
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MyResponseUtility> findRolById(@PathVariable int id){
-        response = rolService.findById(id);
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
 
-    }
 }
