@@ -13,5 +13,5 @@ public class UsuarioDTO {
     private String apellidos;
     private String correoElectronico;
     private BigInteger celular;
-    private int idRol;
+    private Integer idRol;
 }

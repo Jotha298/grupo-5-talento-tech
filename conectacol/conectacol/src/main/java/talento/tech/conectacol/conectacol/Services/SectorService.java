@@ -3,11 +3,9 @@ package talento.tech.conectacol.conectacol.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import talento.tech.conectacol.conectacol.Entities.Sector;
+import talento.tech.conectacol.conectacol.Entities.Models.Sector;
 import talento.tech.conectacol.conectacol.Repositories.SectorRepository;
 import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
-
-import java.util.Optional;
 
 import static talento.tech.conectacol.conectacol.utilities.ApplicationConstants.SERVER_ERROR;
 

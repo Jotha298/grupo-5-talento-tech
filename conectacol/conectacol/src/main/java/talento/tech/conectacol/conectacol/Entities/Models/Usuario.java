@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.Entities;
+package talento.tech.conectacol.conectacol.Entities.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
+    private Integer idUsuario;
 
     @Enumerated(EnumType.STRING)
     private TipoDocumento tipoDocumento;
@@ -37,5 +37,8 @@ public class Usuario {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rol_id", referencedColumnName = "idRol", nullable = false)
     private Rol rol;
+
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Emprendedor emprendedor;
 
 }

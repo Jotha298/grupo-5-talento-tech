@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import talento.tech.conectacol.conectacol.Entities.Rol;
+import talento.tech.conectacol.conectacol.Entities.DTO.RolDTO;
+import talento.tech.conectacol.conectacol.Entities.Models.Rol;
 import talento.tech.conectacol.conectacol.Services.RolService;
 import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/conectacol/rol")
@@ -21,8 +20,8 @@ public class RolController {
     private MyResponseUtility response;
 
     @PostMapping
-    public ResponseEntity<MyResponseUtility> saveRol(@RequestBody Rol rol){
-        response = rolService.saveRol(rol);
+    public ResponseEntity<MyResponseUtility> saveRol(@RequestBody RolDTO rolDTO){
+        response = rolService.saveRol(rolDTO);
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
 

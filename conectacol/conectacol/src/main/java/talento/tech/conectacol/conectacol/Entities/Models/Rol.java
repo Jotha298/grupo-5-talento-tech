@@ -1,6 +1,5 @@
-package talento.tech.conectacol.conectacol.Entities;
+package talento.tech.conectacol.conectacol.Entities.Models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ import java.util.List;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRol;
+    private Integer idRol;
 
     @Column(nullable = false, length = 50)
     private String nombre;

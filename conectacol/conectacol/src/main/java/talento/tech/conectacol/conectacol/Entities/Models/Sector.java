@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.Entities;
+package talento.tech.conectacol.conectacol.Entities.Models;
 
 
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ public class Sector {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSector;
+    private Integer idSector;
 
     @Column(nullable = false, length = 50)
     private String nombre;
