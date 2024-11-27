@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.utilities;
+package talento.tech.conectacol.conectacol.Utilities;
 
 public class ApplicationConstants {
 

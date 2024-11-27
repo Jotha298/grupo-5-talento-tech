@@ -6,9 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import talento.tech.conectacol.conectacol.Entities.DTO.EmprendedorDTO;
-import talento.tech.conectacol.conectacol.Entities.Models.Emprendedor;
 import talento.tech.conectacol.conectacol.Services.EmprendedorService;
-import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
+import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
 @CrossOrigin(origins = {"*"})
 @RestController

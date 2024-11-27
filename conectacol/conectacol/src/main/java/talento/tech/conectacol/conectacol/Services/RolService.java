@@ -6,13 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import talento.tech.conectacol.conectacol.Entities.DTO.RolDTO;
 import talento.tech.conectacol.conectacol.Entities.Mapper.RolMapper;
-import talento.tech.conectacol.conectacol.Entities.Models.Rol;
+import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
 import talento.tech.conectacol.conectacol.Repositories.RolRepository;
-import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
+import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
 import java.util.Optional;
 
-import static talento.tech.conectacol.conectacol.utilities.ApplicationConstants.SERVER_ERROR;
+import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
 
 @Service
 public class RolService {
@@ -53,7 +53,7 @@ public class RolService {
 
             if (optionalRol.isEmpty()) {
                 response.message = "Rol no encontrado con id: " + idRol;
-                response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+                response.status = HttpStatus.NOT_FOUND.value();
                 response.error = true;
                 return response;
             }

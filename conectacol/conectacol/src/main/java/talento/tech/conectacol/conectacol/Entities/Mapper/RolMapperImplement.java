@@ -2,7 +2,7 @@ package talento.tech.conectacol.conectacol.Entities.Mapper;
 
 import org.springframework.stereotype.Component;
 import talento.tech.conectacol.conectacol.Entities.DTO.RolDTO;
-import talento.tech.conectacol.conectacol.Entities.Models.Rol;
+import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
 
 import java.util.List;
 import java.util.stream.Collectors;

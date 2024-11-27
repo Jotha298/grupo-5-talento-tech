@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.Entities.Models;
+package talento.tech.conectacol.conectacol.Entities.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;

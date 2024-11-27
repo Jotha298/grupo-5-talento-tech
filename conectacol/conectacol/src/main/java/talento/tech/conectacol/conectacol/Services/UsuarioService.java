@@ -5,15 +5,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import talento.tech.conectacol.conectacol.Entities.DTO.UsuarioDTO;
 import talento.tech.conectacol.conectacol.Entities.Mapper.UsuarioMapper;
-import talento.tech.conectacol.conectacol.Entities.Models.Rol;
-import talento.tech.conectacol.conectacol.Entities.Models.Usuario;
+import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
+import talento.tech.conectacol.conectacol.Entities.Domain.Usuario;
 import talento.tech.conectacol.conectacol.Repositories.RolRepository;
 import talento.tech.conectacol.conectacol.Repositories.UsuarioRepository;
-import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
+import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
 import java.util.Optional;
 
-import static talento.tech.conectacol.conectacol.utilities.ApplicationConstants.SERVER_ERROR;
+import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
 
 @Service
 public class UsuarioService {
@@ -68,7 +68,16 @@ public class UsuarioService {
 
         try {
             response = new MyResponseUtility();
-            response.data = usuarioRepository.findById(idUsuario);
+            Optional<Usuario> optionalUsuario =usuarioRepository.findById(idUsuario);
+
+            if (optionalUsuario.isEmpty()) {
+                response.message = "Usuario no encontrado con id: " + idUsuario;
+                response.status = HttpStatus.NOT_FOUND.value();
+                response.error = true;
+                return response;
+            }
+
+            response.data = usuarioMapper.toUsuarioDTO(optionalUsuario.get());
             response.status = HttpStatus.CREATED.value();
             return response;
 

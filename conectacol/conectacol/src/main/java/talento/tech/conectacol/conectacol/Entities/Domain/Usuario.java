@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.Entities.Models;
+package talento.tech.conectacol.conectacol.Entities.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,11 +34,14 @@ public class Usuario {
     @Column(nullable = false)
     private BigInteger celular;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rol_id", referencedColumnName = "idRol", nullable = false)
     private Rol rol;
 
     @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
     private Emprendedor emprendedor;
+
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Inversionista inversionista;
 
 }

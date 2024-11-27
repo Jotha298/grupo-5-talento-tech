@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import talento.tech.conectacol.conectacol.Entities.Models.Sector;
+import talento.tech.conectacol.conectacol.Entities.Domain.Sector;
 import talento.tech.conectacol.conectacol.Services.SectorService;
-import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
+import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
 @CrossOrigin(origins = {"*"})
 @RestController

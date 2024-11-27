@@ -3,8 +3,8 @@ package talento.tech.conectacol.conectacol.Entities.Mapper;
 
 
 import talento.tech.conectacol.conectacol.Entities.DTO.EmprendedorDTO;
-import talento.tech.conectacol.conectacol.Entities.Models.Emprendedor;
-import talento.tech.conectacol.conectacol.Entities.Models.Usuario;
+import talento.tech.conectacol.conectacol.Entities.Domain.Emprendedor;
+import talento.tech.conectacol.conectacol.Entities.Domain.Usuario;
 
 import java.util.List;
 

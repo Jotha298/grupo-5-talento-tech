@@ -2,8 +2,8 @@ package talento.tech.conectacol.conectacol.Entities.Mapper;
 
 import org.springframework.stereotype.Component;
 import talento.tech.conectacol.conectacol.Entities.DTO.UsuarioDTO;
-import talento.tech.conectacol.conectacol.Entities.Models.Rol;
-import talento.tech.conectacol.conectacol.Entities.Models.Usuario;
+import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
+import talento.tech.conectacol.conectacol.Entities.Domain.Usuario;
 
 import java.util.Collections;
 import java.util.List;

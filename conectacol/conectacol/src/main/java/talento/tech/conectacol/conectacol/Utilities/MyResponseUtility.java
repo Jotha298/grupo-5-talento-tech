@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.utilities;
+package talento.tech.conectacol.conectacol.Utilities;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

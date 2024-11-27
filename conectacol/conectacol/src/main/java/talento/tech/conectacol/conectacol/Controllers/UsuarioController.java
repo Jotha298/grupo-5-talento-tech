@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import talento.tech.conectacol.conectacol.Entities.DTO.UsuarioDTO;
 import talento.tech.conectacol.conectacol.Services.UsuarioService;
-import talento.tech.conectacol.conectacol.utilities.MyResponseUtility;
+import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
 @CrossOrigin(origins = {"*"})
 @RestController

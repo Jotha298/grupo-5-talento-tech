@@ -1,4 +1,4 @@
-package talento.tech.conectacol.conectacol.Entities.Models;
+package talento.tech.conectacol.conectacol.Entities.Domain;
 
 
 import jakarta.persistence.*;
@@ -16,7 +16,7 @@ public class Emprendedor {
     @Column(nullable = false)
     private Double experiencia;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "idUsuario", nullable = false, unique = true)
     private Usuario usuario;
 
