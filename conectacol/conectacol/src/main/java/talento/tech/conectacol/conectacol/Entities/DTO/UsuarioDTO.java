@@ -7,6 +7,7 @@ import java.math.BigInteger;
 
 @Data
 public class UsuarioDTO {
+    private Integer idUsuario;
     private TipoDocumento tipoDocumento;
     private String documento;
     private String nombre;

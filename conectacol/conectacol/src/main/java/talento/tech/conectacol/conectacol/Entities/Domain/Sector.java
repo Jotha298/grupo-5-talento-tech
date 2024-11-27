@@ -4,6 +4,8 @@ package talento.tech.conectacol.conectacol.Entities.Domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Sector {
@@ -14,5 +16,8 @@ public class Sector {
 
     @Column(nullable = false, length = 50)
     private String nombre;
+
+    @OneToMany(mappedBy = "sector", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Emprendimiento> emprendimientos;
 
 }

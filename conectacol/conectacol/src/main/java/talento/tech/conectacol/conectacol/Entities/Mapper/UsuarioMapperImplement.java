@@ -15,6 +15,7 @@ public class UsuarioMapperImplement implements UsuarioMapper{
     public Usuario toUsuario(UsuarioDTO usuarioDTO, Rol rol) {
 
         Usuario usuario = new Usuario();
+        usuario.setIdUsuario(usuarioDTO.getIdUsuario());
         usuario.setTipoDocumento(usuarioDTO.getTipoDocumento());
         usuario.setDocumento(usuarioDTO.getDocumento());
         usuario.setNombre(usuarioDTO.getNombre());
@@ -31,6 +32,7 @@ public class UsuarioMapperImplement implements UsuarioMapper{
     public UsuarioDTO toUsuarioDTO(Usuario usuario) {
 
         UsuarioDTO dto = new UsuarioDTO();
+        dto.setIdUsuario(usuario.getIdUsuario());
         dto.setTipoDocumento(usuario.getTipoDocumento());
         dto.setDocumento(usuario.getDocumento());
         dto.setNombre(usuario.getNombre());
