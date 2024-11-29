@@ -21,6 +21,8 @@ public class UsuarioMapperImplement implements UsuarioMapper{
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setApellidos(usuarioDTO.getApellidos());
         usuario.setCorreoElectronico(usuarioDTO.getCorreoElectronico());
+        usuario.setContrasenia(usuarioDTO.getContrasenia());
+        usuario.setEdad(usuarioDTO.getEdad());
         usuario.setCelular(usuarioDTO.getCelular());
         usuario.setRol(rol);
 
@@ -38,6 +40,8 @@ public class UsuarioMapperImplement implements UsuarioMapper{
         dto.setNombre(usuario.getNombre());
         dto.setApellidos(usuario.getApellidos());
         dto.setCorreoElectronico(usuario.getCorreoElectronico());
+        dto.setContrasenia(usuario.getContrasenia());
+        dto.setEdad(usuario.getEdad());
         dto.setCelular(usuario.getCelular());
         dto.setIdRol(usuario.getRol().getIdRol());
         return dto;

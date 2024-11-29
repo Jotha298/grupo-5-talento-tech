@@ -31,6 +31,12 @@ public class Usuario {
     @Column(nullable = false, length = 50)
     private String correoElectronico;
 
+    @Column(nullable = false, length = 50)
+    private String contrasenia;
+
+    @Column(nullable = false)
+    private Integer edad;
+
     @Column(nullable = false)
     private BigInteger celular;
 

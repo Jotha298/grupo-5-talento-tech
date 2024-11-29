@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -46,6 +47,9 @@ public class Emprendimiento {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sector_id", referencedColumnName = "idSector", nullable = false)
     private Sector sector;
+
+    @OneToMany(mappedBy = "emprendimiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Contacto> contactos;
 
 
 }

@@ -13,6 +13,8 @@ public class UsuarioDTO {
     private String nombre;
     private String apellidos;
     private String correoElectronico;
+    private String contrasenia;
+    private Integer edad;
     private BigInteger celular;
     private Integer idRol;
 }

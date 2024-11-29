@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import talento.tech.conectacol.conectacol.Entities.DTO.EmprendimientoDTO;
-import talento.tech.conectacol.conectacol.Entities.DTO.UsuarioDTO;
 import talento.tech.conectacol.conectacol.Entities.Domain.*;
 import talento.tech.conectacol.conectacol.Entities.Mapper.EmprendimientoMapper;
 import talento.tech.conectacol.conectacol.Repositories.EmprendedorRepository;
