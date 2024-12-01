@@ -78,7 +78,7 @@ public class UsuarioService {
             }
 
             response.data = usuarioMapper.toUsuarioDTO(optionalUsuario.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {

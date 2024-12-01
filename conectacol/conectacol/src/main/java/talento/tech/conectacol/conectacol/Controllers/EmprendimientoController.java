@@ -31,4 +31,16 @@ public class EmprendimientoController {
         response = emprendimientoService.findById( idEmprendimiento );
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
+
+    @GetMapping("/por-emprendedor/{emprendedorId}")
+    public ResponseEntity<MyResponseUtility> findEntrepreneurshipByIdEnterpreneur( @PathVariable int emprendedorId ){
+        response = emprendimientoService.findEntrepreneurshipByIdEnterpreneur(emprendedorId);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+    }
+
+    @GetMapping("/todos")
+    public ResponseEntity<MyResponseUtility> getAllEntrepreneurships(){
+        response = emprendimientoService.getAllEntrepreneurships();
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+    }
 }

@@ -30,4 +30,10 @@ public class RolController {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
 
     }
+    @GetMapping("/todos")
+    public ResponseEntity<MyResponseUtility> findAll(){
+        response = rolService.findAll();
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+
+    }
 }
