@@ -78,7 +78,7 @@ public class InversionistaService {
             }
 
             response.data = inversionistaMapper.toInversionistaDTO(optionalInversionista.get());
-            response.status = HttpStatus.FOUND.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {

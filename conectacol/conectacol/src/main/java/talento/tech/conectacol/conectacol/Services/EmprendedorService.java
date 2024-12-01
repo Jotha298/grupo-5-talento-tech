@@ -78,7 +78,7 @@ public class EmprendedorService {
             }
 
             response.data = emprendedorMapper.toEmprededorDTO(optionalEmprendedor.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {

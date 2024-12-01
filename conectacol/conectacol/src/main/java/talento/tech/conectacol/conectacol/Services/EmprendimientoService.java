@@ -12,6 +12,7 @@ import talento.tech.conectacol.conectacol.Repositories.EmprendimientoRepository;
 import talento.tech.conectacol.conectacol.Repositories.SectorRepository;
 import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
+import java.util.List;
 import java.util.Optional;
 
 import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
@@ -93,7 +94,7 @@ public class EmprendimientoService {
             }
 
             response.data = emprendimientoMapper.toEmprendimientoDTO(optionalEmprendimiento.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {
@@ -102,5 +103,41 @@ public class EmprendimientoService {
             response.error = true;
             return response;
         }
+    }
+
+    public MyResponseUtility findEntrepreneurshipByIdEnterpreneur(int idEmprendedor){
+
+        try {
+
+            List<Emprendimiento> emprendimientos = emprendimientoRepository.findAllByEmprendedorId(idEmprendedor);
+            response.data = emprendimientoMapper.toEmprendimientoDTOs(emprendimientos);
+            response.status = HttpStatus.OK.value();
+            return response;
+
+        } catch (Exception e) {
+            response.message = SERVER_ERROR;
+            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
+            return response;
+        }
+
+    }
+
+    public MyResponseUtility getAllEntrepreneurships(){
+
+        try {
+
+            List<Emprendimiento> emprendimientos = emprendimientoRepository.findAll();
+            response.data = emprendimientoMapper.toEmprendimientoDTOs(emprendimientos);
+            response.status = HttpStatus.OK.value();
+            return response;
+
+        } catch (Exception e) {
+            response.message = SERVER_ERROR;
+            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
+            return response;
+        }
+
     }
 }

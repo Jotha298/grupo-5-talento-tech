@@ -57,7 +57,7 @@ public class SectorService {
             }
 
             response.data = sectorMapper.toSectorDTO(optionalSector.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {

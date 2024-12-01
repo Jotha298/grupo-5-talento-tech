@@ -95,7 +95,7 @@ public class ContactoService {
             }
 
             response.data = contactoMapper.toContactoDTO(optionalContacto.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {

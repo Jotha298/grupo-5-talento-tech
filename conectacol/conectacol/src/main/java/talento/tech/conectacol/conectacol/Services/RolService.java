@@ -59,7 +59,7 @@ public class RolService {
             }
 
             response.data = rolMapper.toRolDTO(optionalRol.get());
-            response.status = HttpStatus.CREATED.value();
+            response.status = HttpStatus.OK.value();
             return response;
 
         } catch (Exception e) {
