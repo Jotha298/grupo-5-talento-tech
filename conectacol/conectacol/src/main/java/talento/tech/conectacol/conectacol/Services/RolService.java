@@ -10,7 +10,6 @@ import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
 import talento.tech.conectacol.conectacol.Repositories.RolRepository;
 import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
-import java.util.List;
 import java.util.Optional;
 
 import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
@@ -60,24 +59,6 @@ public class RolService {
             }
 
             response.data = rolMapper.toRolDTO(optionalRol.get());
-            response.status = HttpStatus.OK.value();
-            return response;
-
-        } catch (Exception e) {
-            response.message = SERVER_ERROR;
-            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
-            response.error = true;
-            return response;
-        }
-    }
-    public MyResponseUtility findAll(){
-
-        try {
-            response = new MyResponseUtility();
-            List<Rol> optionalRol = rolRepository.findAll();
-
-
-            response.data = rolMapper.toRolDTOs(optionalRol);
             response.status = HttpStatus.OK.value();
             return response;
 
