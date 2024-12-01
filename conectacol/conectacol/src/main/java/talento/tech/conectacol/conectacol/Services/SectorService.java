@@ -3,9 +3,14 @@ package talento.tech.conectacol.conectacol.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import talento.tech.conectacol.conectacol.Entities.DTO.SectorDTO;
+import talento.tech.conectacol.conectacol.Entities.Domain.Rol;
 import talento.tech.conectacol.conectacol.Entities.Domain.Sector;
+import talento.tech.conectacol.conectacol.Entities.Mapper.SectorMapper;
 import talento.tech.conectacol.conectacol.Repositories.SectorRepository;
 import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
+
+import java.util.Optional;
 
 import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
 
@@ -15,20 +20,26 @@ public class SectorService {
     @Autowired
     private SectorRepository sectorRepository;
 
+    @Autowired
     private MyResponseUtility response;
 
+    @Autowired
+    private SectorMapper sectorMapper;
 
-    public MyResponseUtility createSector(Sector sector) {
+    public MyResponseUtility createSector(SectorDTO sectorDTO) {
 
         try {
             response = new MyResponseUtility();
-            response.data = sectorRepository.save(sector);
+            Sector sector = sectorMapper.toSector(sectorDTO);
+            Sector sectorguardado = sectorRepository.save(sector);
+            response.data = sectorMapper.toSectorDTO(sectorguardado);
             response.status = HttpStatus.CREATED.value();
             return response;
 
         } catch (Exception e) {
             response.message = SERVER_ERROR;
             response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
             return response;
         }
     }
@@ -36,12 +47,23 @@ public class SectorService {
     public MyResponseUtility findById(int idSector) {
         try {
             response = new MyResponseUtility();
-            response.data = sectorRepository.findById(idSector);
-            response.status = HttpStatus.OK.value();
+            Optional<Sector> optionalSector = sectorRepository.findById(idSector);
+
+            if (optionalSector.isEmpty()) {
+                response.message = "Sector no encontrado con id: " + idSector;
+                response.status = HttpStatus.NOT_FOUND.value();
+                response.error = true;
+                return response;
+            }
+
+            response.data = sectorMapper.toSectorDTO(optionalSector.get());
+            response.status = HttpStatus.CREATED.value();
             return response;
+
         } catch (Exception e) {
             response.message = SERVER_ERROR;
             response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
             return response;
         }
 

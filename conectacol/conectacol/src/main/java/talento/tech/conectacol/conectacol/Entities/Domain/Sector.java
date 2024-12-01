@@ -17,7 +17,5 @@ public class Sector {
     @Column(nullable = false, length = 50)
     private String nombre;
 
-    @OneToMany(mappedBy = "sector", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Emprendimiento> emprendimientos;
 
 }
