@@ -30,5 +30,12 @@ public class SectorController {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
 
+    @GetMapping("/todos")
+    public ResponseEntity<MyResponseUtility> findAll(){
+        response = sectorService.findAll();
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+
+    }
+
 
 }

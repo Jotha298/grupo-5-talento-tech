@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import talento.tech.conectacol.conectacol.Entities.DTO.RolDTO;
 import talento.tech.conectacol.conectacol.Services.RolService;
 import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
-
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/conectacol/rol")
 public class RolController {

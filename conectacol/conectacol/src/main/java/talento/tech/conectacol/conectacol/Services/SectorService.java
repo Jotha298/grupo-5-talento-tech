@@ -10,6 +10,7 @@ import talento.tech.conectacol.conectacol.Entities.Mapper.SectorMapper;
 import talento.tech.conectacol.conectacol.Repositories.SectorRepository;
 import talento.tech.conectacol.conectacol.Utilities.MyResponseUtility;
 
+import java.util.List;
 import java.util.Optional;
 
 import static talento.tech.conectacol.conectacol.Utilities.ApplicationConstants.SERVER_ERROR;
@@ -67,5 +68,22 @@ public class SectorService {
             return response;
         }
 
+    }
+    public MyResponseUtility findAll(){
+
+        try {
+            response = new MyResponseUtility();
+            List<Sector> optionalSector = sectorRepository.findAll();
+
+            response.data = sectorMapper.toSectorDTOs(optionalSector);
+            response.status = HttpStatus.OK.value();
+            return response;
+
+        } catch (Exception e) {
+            response.message = SERVER_ERROR;
+            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
+            return response;
+        }
     }
 }
