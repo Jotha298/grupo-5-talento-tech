@@ -43,4 +43,13 @@ public class EmprendimientoController {
         response = emprendimientoService.getAllEntrepreneurships();
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MyResponseUtility> updateEmprendimiento(
+            @PathVariable Integer id,
+            @RequestBody EmprendimientoDTO emprendimientoDTO
+    ) {
+        response = emprendimientoService.updateEntrepreneurships(id, emprendimientoDTO);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+    }
 }

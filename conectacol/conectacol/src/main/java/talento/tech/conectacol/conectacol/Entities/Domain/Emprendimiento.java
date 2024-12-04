@@ -37,8 +37,6 @@ public class Emprendimiento {
     @Column(nullable = false, length = 3000)
     private String urlImagen;
 
-    @Column(nullable = false)
-    private Date fechaInversion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "emprendedor_id", referencedColumnName = "idEmprendedor", nullable = false)

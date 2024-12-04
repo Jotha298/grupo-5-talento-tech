@@ -14,7 +14,6 @@ public class EmprendimientoDTO {
     private Double montoRequerido;
     private Boolean estado;
     private String urlImagen;
-    private Date fechaInversion;
     private Integer idEmprendedor;
     private Integer idSector;
 

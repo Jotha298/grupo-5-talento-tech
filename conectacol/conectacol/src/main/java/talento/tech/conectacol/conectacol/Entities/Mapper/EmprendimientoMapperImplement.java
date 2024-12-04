@@ -26,7 +26,6 @@ public class EmprendimientoMapperImplement implements EmprendimientoMapper{
         emprendimiento.setMontoRequerido(emprendimientoDTO.getMontoRequerido());
         emprendimiento.setEstado(emprendimientoDTO.getEstado());
         emprendimiento.setUrlImagen(emprendimientoDTO.getUrlImagen());
-        emprendimiento.setFechaInversion(emprendimientoDTO.getFechaInversion());
         emprendimiento.setEmprendedor(emprendedor); // Relación con Emprendedor
         emprendimiento.setSector(sector); // Relación con Sector
         return emprendimiento;
@@ -47,7 +46,6 @@ public class EmprendimientoMapperImplement implements EmprendimientoMapper{
         emprendimientoDTO.setMontoRequerido(emprendimiento.getMontoRequerido());
         emprendimientoDTO.setEstado(emprendimiento.getEstado());
         emprendimientoDTO.setUrlImagen(emprendimiento.getUrlImagen());
-        emprendimientoDTO.setFechaInversion(emprendimiento.getFechaInversion());
 
         // Mapear datos del Emprendedor asociado
         Emprendedor emprendedor = emprendimiento.getEmprendedor();

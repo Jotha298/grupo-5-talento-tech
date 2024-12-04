@@ -62,7 +62,7 @@ public class EmprendimientoService {
             // Convertir el DTO en una entidad
             Emprendimiento emprendimiento = emprendimientoMapper.toEmpreprendimiento(emprendimientoDTO, optionalEmprendedor.get(), optionalSector.get());
 
-            // Guardar el usuario en la base de datos
+            // Guardar el emprendimiento en la base de datos
             Emprendimiento emprendimientoGuardado = emprendimientoRepository.save(emprendimiento);
 
             // Convertir la entidad guardada de vuelta a DTO
@@ -131,6 +131,68 @@ public class EmprendimientoService {
             response.data = emprendimientoMapper.toEmprendimientoDTOs(emprendimientos);
             response.status = HttpStatus.OK.value();
             return response;
+
+        } catch (Exception e) {
+            response.message = SERVER_ERROR;
+            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
+            return response;
+        }
+
+    }
+
+    public MyResponseUtility updateEntrepreneurships(int idEmprendimiento, EmprendimientoDTO emprendimientoDTO){
+        try {
+
+            response = new MyResponseUtility();
+            Optional<Emprendedor> optionalEmprendedor = emprendedorRepository.findById(emprendimientoDTO.getIdEmprendedor());
+
+            if (optionalEmprendedor.isEmpty()) {
+                response.message = "Emprendedor no encontrado con id: " + emprendimientoDTO.getIdEmprendedor();
+                response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+                response.error = true;
+                return response;
+            }
+
+            Optional<Sector> optionalSector = sectorRepository.findById(emprendimientoDTO.getIdSector());
+
+            if (optionalSector.isEmpty()) {
+                response.message = "Sector no encontrado con id: " + emprendimientoDTO.getIdEmprendedor();
+                response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+                response.error = true;
+                return response;
+            }
+
+            Optional<Emprendimiento> foundEntrepreneurship = emprendimientoRepository.findById(idEmprendimiento);
+            if (foundEntrepreneurship.isPresent()) {
+                Emprendimiento existingEmprendimiento = foundEntrepreneurship.get();
+
+                existingEmprendimiento.setTitulo(emprendimientoDTO.getTitulo());
+                existingEmprendimiento.setDescripcion(emprendimientoDTO.getDescripcion());
+                existingEmprendimiento.setUbicacion(emprendimientoDTO.getUbicacion());
+                existingEmprendimiento.setRendimiento(emprendimientoDTO.getRendimiento());
+                existingEmprendimiento.setMontoRequerido(emprendimientoDTO.getMontoRequerido());
+                existingEmprendimiento.setEstado(emprendimientoDTO.getEstado());
+                existingEmprendimiento.setUrlImagen(emprendimientoDTO.getUrlImagen());
+                existingEmprendimiento.setEmprendedor(optionalEmprendedor.get());
+                existingEmprendimiento.setSector(optionalSector.get());
+
+                // Guardar el emprendimiento en la base de datos
+                Emprendimiento emprendimientoGuardado = emprendimientoRepository.save(existingEmprendimiento);
+
+                // Convertir la entidad guardada de vuelta a DTO
+                response.data =  emprendimientoMapper.toEmprendimientoDTO(emprendimientoGuardado);
+
+                response.status = HttpStatus.CREATED.value();
+
+                return response;
+            } else {
+                response.message = "Emprendimiento no encontrado con id: " + idEmprendimiento;
+                response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+                response.error = true;
+                return response;
+            }
+
 
         } catch (Exception e) {
             response.message = SERVER_ERROR;
