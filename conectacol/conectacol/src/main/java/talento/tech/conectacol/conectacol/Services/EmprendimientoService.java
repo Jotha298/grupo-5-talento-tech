@@ -202,4 +202,30 @@ public class EmprendimientoService {
         }
 
     }
+
+    public MyResponseUtility deleteEntrepreneurships(int idEmprendimiento){
+        try{
+
+            response = new MyResponseUtility();
+            Optional<Emprendimiento> optionalEmprendimiento = emprendimientoRepository.findById(idEmprendimiento);
+
+            if (optionalEmprendimiento.isEmpty()) {
+                response.message = "Emprendimiento no encontrado con id: " + idEmprendimiento;
+                response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+                response.error = true;
+                return response;
+            }
+
+            emprendimientoRepository.deleteById(idEmprendimiento);
+            response.message = "El emprendimiento "+ optionalEmprendimiento.get().getTitulo() + " fue eliminado con éxito";
+            response.status = HttpStatus.OK.value();
+            return response;
+
+        }catch (Exception e) {
+            response.message = SERVER_ERROR;
+            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
+            response.error = true;
+            return response;
+        }
+    }
 }

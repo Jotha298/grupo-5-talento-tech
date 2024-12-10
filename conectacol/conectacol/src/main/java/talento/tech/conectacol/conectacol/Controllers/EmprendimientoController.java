@@ -52,4 +52,10 @@ public class EmprendimientoController {
         response = emprendimientoService.updateEntrepreneurships(id, emprendimientoDTO);
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<MyResponseUtility> deleteEntrepreneurships(@PathVariable int id){
+        response = emprendimientoService.deleteEntrepreneurships(id);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.status));
+    }
 }
